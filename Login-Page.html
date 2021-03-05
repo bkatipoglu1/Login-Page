@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: aquamarine;
+        }
+        
+        #div1 {
+            width: 30%;
+            height: 200px;
+            background-color: rgb(24, 20, 20);
+            position: absolute;
+            border-radius: 12px;
+            left: 35%;
+            top: 25%;
+        }
+        
+        #kullaniciAdi {
+            width: 150px;
+            height: 30px;
+            margin-left: 20px;
+            margin-top: 20px;
+            background-color: rgb(170, 155, 155);
+        }
+        
+        #parola {
+            width: 150px;
+            height: 30px;
+            margin-left: 82px;
+            margin-top: 20px;
+            background-color: rgb(170, 155, 155);
+        }
+        
+        #btn {
+            width: 250px;
+            height: 30px;
+            margin-left: 106px;
+            margin-top: 10px;
+            color: whitesmoke;
+            font-size: 16px;
+            background-color: lightslategray;
+        }
+        
+        .textfont {
+            color: lightslategray;
+            font-family: monospace;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1">
+        <label class="textfont" style="margin-left: 50px;" for="kullaniciAdi">Kullanıcı Adı :</label>
+        <input type="text" id="kullaniciAdi">
+        <label class="textfont" style="margin-left: 50px;" for="parola">Parola :</label>
+        <input type="password" id="parola">
+        <br><br>
+        <button onclick="girisOnayi()" id="btn">Giriş Yap</button>
+    </div>
+
+    <img src="1.jpg" id="img" width="1366" height="625" alt="" />
+
+    <script>
+        function resimSec() {
+            var a = ["1.jpg",
+                "e.jpg",
+                "9.jpg",
+                "d.jpg"
+            ];
+            text = "";
+            var random = Math.round(Math.random() * 3);
+            text = a[random];
+        }
+
+        setInterval(function() {
+            resimSec();
+            document.getElementById("img").src = text;
+        }, 2000);
+
+        var kullanicilar = [{
+            kullaniciAdi: "admin",
+            parola: "admin123"
+        }, {
+            kullaniciAdi: "javascript",
+            parola: "1234"
+        }, {
+            kullaniciAdi: "berhanktpgl",
+            parola: "berhan12"
+        }, {
+            kullaniciAdi: "html",
+            parola: "divspanh1"
+        }];
+
+        var girilenKullaniciAdi;
+        var girilenParola;
+        var x;
+
+        function kontrolEt() {
+            girilenKullaniciAdi = document.getElementById("kullaniciAdi").value;
+            girilenParola = document.getElementById("parola").value;
+
+            for (x of kullanicilar) {
+                if ((x.kullaniciAdi == girilenKullaniciAdi) && (x.parola == girilenParola)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        function girisOnayi() {
+            kontrolEt();
+
+            if (kontrolEt()) {
+                window.open("https://www.linkedin.com/in/berhan-katipo%C4%9Flu-b74604156/?originalSubdomain=tr", "_self");
+            } else {
+                alert("Hatalı Kullanıcı Adı ya da Parola. Yeniden Deneyiniz");
+                document.getElementById("kullaniciAdi").value = "";
+                document.getElementById("parola").value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
